@@ -1,3 +1,18 @@
+# React stuff
+react-contacts/node_modules
+react-contacts/.pnp
+react-contacts.pnp.js
+react-contacts/coverage
+react-contacts/build
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
