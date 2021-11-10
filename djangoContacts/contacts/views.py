@@ -25,13 +25,6 @@ def retrieve(request):
             serializer.save()
             return HttpResponse(status=204)
 
-        # form = ContactForm(request.POST)
-        # context['form'] = form
-        # if form.is_valid():
-        #     form.save()
-        #     return HttpResponse(status=204)
-        # return render(request, 'index.html', context)
-
 @api_view(['GET', 'PUT', 'DELETE'])
 def show(request, contact_id):
     contact = Contact.objects.get(id = contact_id)
@@ -44,8 +37,8 @@ def show(request, contact_id):
         contact.delete()
         return HttpResponse(status=204)
 
-    # elif request.method == 'PUT':
-    #     serializer = StudentSerializer(student, data=request.data,context={'request': request})
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(status=status.HTTP_204_NO_CONTENT)
+    elif request.method == 'PUT':
+        serializer = ContactSerializer(contact, data=request.data, context={'request': request})
+        if serializer.is_valid():
+            serializer.save()
+            return HttpResponse(status=204)
