@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Contact from './Contact';
+import Create from './Create';
 
 function Directory(props) {
   const [allcontacts, setAllContacts] = useState([]);
@@ -25,6 +26,7 @@ function Directory(props) {
 
   return (
     <div>
+      <Create onFormChange={props.onFormChange} />
       {allcontacts.map((contact) =>
         <Contact {...contact} onStateChange={props.onStateChange} key={contact.id} />
       )}
