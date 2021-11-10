@@ -11,6 +11,14 @@ class ContactForm extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.showAll = this.showAll.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.contactId !== 0) {
+      const { name, number } = this.props.contact;
+      this.setState({ name, number });
+    }
   }
 
   handleChange(event) {
@@ -20,8 +28,18 @@ class ContactForm extends React.Component {
   async handleSubmit(e) {
     e.preventDefault()
 
-    await axios.post('http://localhost:8000/contacts/',this.state)
-              .then(() => this.props.onFormChange(false,0))
+    if (this.props.contactId === 0) {
+      await axios.post('http://localhost:8000/contacts/',this.state)
+                .then(() => this.props.onFormChange(false,0,null))
+    } else {
+      await axios.put(`http://localhost:8000/contacts/${this.props.contactId}`,this.state)
+                .then(() => this.props.onFormChange(false,this.props.contactId,null))
+    }
+
+  }
+
+  showAll() {
+    this.props.onFormChange(false,0,null)
   }
 
 
@@ -32,12 +50,13 @@ class ContactForm extends React.Component {
         <input type='text' name='name' maxLength='200' value={this.state.name} onChange={this.handleChange} required></input>
         <label>Number </label>
         <input type='text' name='number' maxLength='200' value={this.state.number} onChange={this.handleChange} required></input>
-        <button type='submit' name='action' value='submit'>Create Contact</button>
+        <button type='submit' name='action' value='submit'>Save Contact</button>
       </form>
 
     return (
       <div>
         {formFields}
+        <button onClick={this.showAll}>Back to All Contacts</button>
       </div>
     )
   }

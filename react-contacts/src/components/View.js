@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Delete from './Delete';
+import Edit from './Edit';
 
 function View(props) {
   const [contact, setContact] = useState([]);
@@ -37,6 +38,7 @@ function View(props) {
         </p>
       )}
       <Delete id={props.id} onStateChange={props.onStateChange} />
+      <Edit contact={contact} id={props.id} onFormChange={props.onFormChange} />
       <button onClick={showAll}>Back to All Contacts</button>
     </div>
   )

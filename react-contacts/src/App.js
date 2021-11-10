@@ -10,7 +10,8 @@ class App extends React.Component {
     this.state = {
       showForm: false,
       retrieveSingle: false,
-      contactId: 0
+      contactId: 0,
+      currentContact: null
     };
 
     this.setSingleState = this.setSingleState.bind(this);
@@ -22,17 +23,18 @@ class App extends React.Component {
     this.setState({contactId: id});
   }
 
-  setFormState(form, id) {
+  setFormState(form, id, contact) {
     this.setState({showForm: form});
     this.setState({contactId: id});
+    this.setState({currentContact: contact})
   }
 
   render() {
     let single = this.state.retrieveSingle
-                  ? <View id={this.state.contactId} onStateChange={this.setSingleState} />
+                  ? <View id={this.state.contactId} onStateChange={this.setSingleState} onFormChange={this.setFormState} />
                   : <Directory onStateChange={this.setSingleState} onFormChange={this.setFormState} />
 
-    let form = <ContactForm onFormChange={this.setFormState} />
+    let form = <ContactForm contact={this.state.currentContact} contactId={this.state.contactId} onFormChange={this.setFormState} />
 
     return (
       <div>
