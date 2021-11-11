@@ -1,0 +1,10 @@
+.view-container {
+  margin-left: 30px;
+}
+
+.view-button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #263b99;
+  color: white;
+}

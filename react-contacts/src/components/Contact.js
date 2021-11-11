@@ -1,14 +1,13 @@
 import React from 'react';
+import './stylesheets/Contact.css';
 
 function Contact(props) {
   const showContact = () => {
     props.onStateChange(true, props.id)
   }
-  
+
   return (
-    <div>
-      <button onClick={showContact}>{props.name}</button>
-    </div>
+    <button className='contact-button' onClick={showContact}>{props.name}</button>
   )
 }
 

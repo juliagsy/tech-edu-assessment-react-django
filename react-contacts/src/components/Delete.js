@@ -1,5 +1,6 @@
 import React from 'react';
 import Cookies from 'js-cookie';
+import './stylesheets/Delete.css';
 
 function Delete(props) {
   const csrftoken = Cookies.get('csrftoken');
@@ -22,7 +23,7 @@ function Delete(props) {
   }
 
   return (
-    <button onClick={deleteContact}>Delete this Contact</button>
+    <button className='delete-button' onClick={deleteContact}>Delete this Contact</button>
   )
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import './stylesheets/Edit.css';
 
 function Edit(props) {
   const editContact = () => {
@@ -6,7 +7,7 @@ function Edit(props) {
   }
 
   return (
-    <button onClick={editContact}>Edit this Contact</button>
+    <button className='edit-button' onClick={editContact}>Edit this Contact</button>
   )
 }
 

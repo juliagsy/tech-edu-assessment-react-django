@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import './stylesheets/ContactForm.css';
 
 class ContactForm extends React.Component {
   constructor(props) {
@@ -46,17 +47,20 @@ class ContactForm extends React.Component {
   render() {
     let formFields =
       <form onSubmit={this.handleSubmit}>
-        <label>Name </label>
+        <label className='form-label'>Name </label>
         <input type='text' name='name' maxLength='200' value={this.state.name} onChange={this.handleChange} required></input>
-        <label>Number </label>
+        <br />
+        <label className='form-label'>Number </label>
         <input type='text' name='number' maxLength='200' value={this.state.number} onChange={this.handleChange} required></input>
-        <button type='submit' name='action' value='submit'>Save Contact</button>
+        <br />
+        <button className='form-button' type='submit' name='action' value='submit'>Save Contact</button>
+        <button className='form-button' onClick={this.showAll}>Back to All Contacts</button>
       </form>
 
     return (
-      <div>
+      <div className='form-container'>
+        <h2> Contact Form </h2>
         {formFields}
-        <button onClick={this.showAll}>Back to All Contacts</button>
       </div>
     )
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import './stylesheets/Create.css';
 
 class Create extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Create extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.showButton}>Add New Contact</button>
+        <button className='create-button' onClick={this.showButton}>Add New Contact</button>
       </div>
     )
   }

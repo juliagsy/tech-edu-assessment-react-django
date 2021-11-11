@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Delete from './Delete';
 import Edit from './Edit';
+import './stylesheets/View.css';
 
 function View(props) {
   const [contact, setContact] = useState([]);
@@ -29,17 +30,18 @@ function View(props) {
   }
 
   return (
-    <div>
+    <div className='view-container'>
+      <h2> Contact Details </h2>
       {contact.map((details) =>
-        <p>
-        {details.name}
+        <p className='view-desc'>
+        <b>Name:</b> {details.name}
         <br/>
-        {details.number}
+        <b>Phone Number:</b> {details.number}
         </p>
       )}
       <Delete id={props.id} onStateChange={props.onStateChange} />
       <Edit contact={contact} id={props.id} onFormChange={props.onFormChange} />
-      <button onClick={showAll}>Back to All Contacts</button>
+      <button className='view-button' onClick={showAll}>Back to All Contacts</button>
     </div>
   )
 }
