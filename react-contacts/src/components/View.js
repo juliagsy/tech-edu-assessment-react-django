@@ -33,7 +33,7 @@ function View(props) {
     <div className='view-container'>
       <h2> Contact Details </h2>
       {contact.map((details) =>
-        <p className='view-desc'>
+        <p className='view-desc' key={details.name}>
         <b>Name:</b> {details.name}
         <br/>
         <b>Phone Number:</b> {details.number}
