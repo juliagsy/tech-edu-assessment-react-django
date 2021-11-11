@@ -1,53 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, {useState} from 'react';
 import Directory from './components/Directory';
 import View from './components/View';
 import ContactForm from './components/ContactForm';
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      showForm: false,
-      retrieveSingle: false,
-      contactId: 0,
-      currentContact: null
-    };
+function App() {
+  const [showForm, setShowForm] = useState(false);
+  const [retrieveSingle, setRetrieveSingle] = useState(false);
+  const [contactId, setContactId] = useState(0);
+  const [currentContact, setCurrentContact] = useState(null);
 
-    this.setSingleState = this.setSingleState.bind(this);
-    this.setFormState = this.setFormState.bind(this);
+  const setSingleState = (single, id) => {
+    setRetrieveSingle(single);
+    setContactId(id);
   }
 
-  setSingleState(single, id) {
-    this.setState({retrieveSingle: single});
-    this.setState({contactId: id});
+  const setFormState = (form, id, contact) => {
+    setShowForm(form);
+    setContactId(id);
+    setCurrentContact(contact);
   }
 
-  setFormState(form, id, contact) {
-    this.setState({showForm: form});
-    this.setState({contactId: id});
-    this.setState({currentContact: contact})
-  }
+  let single = retrieveSingle
+                ? <View id={contactId} onStateChange={setSingleState} onFormChange={setFormState} />
+                : <Directory onStateChange={setSingleState} onFormChange={setFormState} />
 
-  render() {
-    let single = this.state.retrieveSingle
-                  ? <View id={this.state.contactId} onStateChange={this.setSingleState} onFormChange={this.setFormState} />
-                  : <Directory onStateChange={this.setSingleState} onFormChange={this.setFormState} />
+  let form = <ContactForm contact={currentContact} contactId={contactId} onFormChange={setFormState} />
 
-    let form = <ContactForm contact={this.state.currentContact} contactId={this.state.contactId} onFormChange={this.setFormState} />
-
-    return (
-      <div>
-        {
-          this.state.showForm
-          ? form
-          : single
-        }
-      </div>
-    )
-  }
+  return (
+    <div>
+      { showForm ? form : single }
+    </div>
+  )
 }
 
 export default App;
-
-ReactDOM.render(<App />, document.getElementById('root'));

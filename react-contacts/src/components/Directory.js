@@ -6,23 +6,21 @@ import './stylesheets/Directory.css';
 function Directory(props) {
   const [allcontacts, setAllContacts] = useState([]);
 
-  function parseData(data) {
-    data.forEach(contact => {
-      setAllContacts(prevState => ([
-        ...prevState,
-        {
-          id: contact.pk,
-          name: contact.fields.name,
-          number: contact.fields.number
-        }
-      ]))
-    })
-  }
-
   useEffect(() => {
     fetch('http://localhost:8000/contacts/')
         .then(response => response.json())
-        .then(data => parseData(data))
+        .then(data => {
+          data.forEach(contact => {
+            setAllContacts(prevState => ([
+              ...prevState,
+              {
+                id: contact.pk,
+                name: contact.fields.name,
+                number: contact.fields.number
+              }
+            ]))
+          })
+        })
   }, [])
 
   return (

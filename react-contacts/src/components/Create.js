@@ -1,24 +1,17 @@
 import React from 'react';
 import './stylesheets/Create.css';
 
-class Create extends React.Component {
-  constructor(props) {
-    super(props);
+function Create(props) {
 
-    this.showButton = this.showButton.bind(this);
+  const showButton = async () => {
+    await props.onFormChange(true,0)
   }
 
-  showButton() {
-    this.props.onFormChange(true,0)
-  }
-
-  render() {
-    return (
-      <div>
-        <button className='create-button' onClick={this.showButton}>Add New Contact</button>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <button className='create-button' onClick={showButton}>Add New Contact</button>
+    </div>
+  )
 }
 
 export default Create;
