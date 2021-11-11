@@ -1,8 +1,9 @@
 # Contact List Web Application (React + Django)
 
 ## Prerequisites
-1. [Python3](https://www.python.org/downloads/macos/)
-2. [Yarn](https://www.geeksforgeeks.org/how-to-install-yarn-in-macos-ubuntu-windows/)
+1. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+2. [Python3](https://www.python.org/downloads/macos/)
+3. [Yarn](https://www.geeksforgeeks.org/how-to-install-yarn-in-macos-ubuntu-windows/)
 
 ## Installations and Setup
 1. Clone the project to your local device by:
