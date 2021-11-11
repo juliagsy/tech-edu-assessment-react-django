@@ -1,4 +1,4 @@
-# tech-edu-assessment
+# Contact List Web Application (React + Django)
 
 ## Prerequisites
 1. [Python3](https://www.python.org/downloads/macos/)
@@ -10,7 +10,7 @@
 git clone https://github.com/juliagsy/tech-edu-assessment.git
 ```
 
-2. `cd` into the `djangoContacts` and `react-contacts` folder in two different terminal windows.
+2. `cd` into the `djangoContacts` and `react-contacts` folders respectively in two different terminal windows.
 
 3. In the `djangoContacts` terminal window, run:
 ```sh
